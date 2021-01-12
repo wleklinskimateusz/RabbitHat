@@ -1,0 +1,29 @@
+﻿@page "/projects"
+@using Models;
+<h3>Projects</h3>
+<ul>
+    <li><h4>SudokuSolver</h4></li>
+</ul>
+@*@foreach (var project in AllProjects)
+{
+    <h4>@project.Name</h4>
+}*@
+
+
+@code {
+    Project Sudoku = new Project();
+    List<Project> AllProjects = new List<Project>();
+
+    void OnParametersSet()
+    {
+        Sudoku.Name = "SudokuSolver";
+        Sudoku.Technologies = new List<Technology>()
+            {
+                new Technology("C#"),
+                new Technology("Unity")
+            };
+        AllProjects.Add(Sudoku);
+    }
+
+
+}
