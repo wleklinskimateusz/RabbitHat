@@ -13,5 +13,10 @@ namespace BlazorApp.Client.Models
         {
             Name = name;
         }
+
+        public Technology()
+        {
+
+        }
     }
 }
