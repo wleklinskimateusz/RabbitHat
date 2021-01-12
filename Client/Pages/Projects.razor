@@ -1,29 +1,46 @@
 ﻿@page "/projects"
-@using Models;
+@using Models
+@using BlazorApp.Shared
+
+@inject HttpClient Http
 <h3>Projects</h3>
-<ul>
-    <li><h4>SudokuSolver</h4></li>
-</ul>
-@*@foreach (var project in AllProjects)
+@if (AllProjects == null)
 {
-    <h4>@project.Name</h4>
-}*@
+    <p><em>Loading...</em></p>
+}
+else
+{
+    
+
+    @foreach (var project in AllProjects)
+    {
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">@project.Name</h5>
+            <p class="card-text">@project.Description</p>
+            <a href="@project.URL" class="btn btn-primary">See for yourself</a>
+        </div>
+    </div>
+    }
+
+   
+}
+
 
 
 @code {
-    Project Sudoku = new Project();
-    List<Project> AllProjects = new List<Project>();
+    private Project[] AllProjects;
 
-    void OnParametersSet()
+    protected override async Task OnInitializedAsync()
     {
-        Sudoku.Name = "SudokuSolver";
-        Sudoku.Technologies = new List<Technology>()
-            {
-                new Technology("C#"),
-                new Technology("Unity")
-            };
-        AllProjects.Add(Sudoku);
+        try
+        {
+            AllProjects = await Http.GetFromJsonAsync<Project[]>("/api/Projects");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
     }
-
-
 }
