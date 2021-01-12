@@ -1,5 +1,4 @@
 ﻿@page "/projects"
-@using Models
 @using BlazorApp.Shared
 
 @inject HttpClient Http
@@ -10,20 +9,21 @@
 }
 else
 {
-    
+<div class="d-flex p-2 flex-wrap">
 
     @foreach (var project in AllProjects)
     {
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">@project.Name</h5>
-            <p class="card-text">@project.Description</p>
-            <a href="@project.URL" class="btn btn-primary">See for yourself</a>
+        <div class="card" style="width: 18rem;">
+            <img src="@project.Image" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@project.Name</h5>
+                <p class="card-text">@project.Description</p>
+                <a href="@project.URL" class="btn btn-primary">See for yourself</a>
+            </div>
         </div>
-    </div>
     }
 
+</div>
    
 }
 
@@ -41,6 +41,22 @@ else
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
+            Project Sudoku = new Project("SudokuSolver", "Unity", new DateTime(2020, 12, 28), "https://simmer.io/@matix0508/sudokusolver");
+            Sudoku.Description = "Short Description";
+            Sudoku.Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg/1200px-Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg.png";
+            Project Sudoku2 = new Project("SudokuSolver", "Unity", new DateTime(2020, 12, 28), "https://simmer.io/@matix0508/sudokusolver");
+            Sudoku2.Description = "Short Description";
+            Sudoku2.Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg/1200px-Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg.png";
+            Project Sudoku3 = new Project("SudokuSolver", "Unity", new DateTime(2020, 12, 28), "https://simmer.io/@matix0508/sudokusolver");
+            Sudoku3.Description = "Short Description";
+            Sudoku3.Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg/1200px-Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg.png";
+            var result = new List<Project>()
+            {
+                Sudoku,
+                Sudoku2,
+                Sudoku3
+            };
+            AllProjects = result.ToArray();
         }
     }
 }
