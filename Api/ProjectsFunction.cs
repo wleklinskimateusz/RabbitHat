@@ -18,22 +18,9 @@ namespace BlazorApp.Api
             ILogger log)
         {
 
-            Project Sudoku = new Project("SudokuSolver", "Unity", new DateTime(2020, 12, 28), "https://simmer.io/@matix0508/sudokusolver");
-            Sudoku.Description = "Short Description";
-            Sudoku.Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg/1200px-Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg.png";
+            // Console.WriteLine("Hello");
 
-            Project Sudoku2 = new Project("SudokuSolver", "Unity", new DateTime(2020, 12, 28), "https://simmer.io/@matix0508/sudokusolver");
-            Sudoku2.Description = "Short Description";
-            Sudoku2.Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg/1200px-Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg.png";
-            var result = new List<Project>()
-            {
-                Sudoku,
-                Sudoku2
-            };
-
-            Console.WriteLine("Hello");
-
-            return new OkObjectResult(result.ToArray());
+            return new OkObjectResult(Project.GetExample());
         }
     }
 }

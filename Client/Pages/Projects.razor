@@ -11,14 +11,13 @@ else
 {
 <div class="d-flex p-2 flex-wrap">
 
-    @foreach (var project in AllProjects)
+    @foreach (var techn in Technologies)
     {
         <div class="card" style="width: 18rem;">
-            <img src="@project.Image" class="card-img-top" alt="...">
+            <img src="@techn.Image" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">@project.Name</h5>
-                <p class="card-text">@project.Description</p>
-                <a href="@project.URL" class="btn btn-primary">See for yourself</a>
+                <h5 class="card-title">@techn.Name</h5>
+                <a href="/projects/@techn.Name" class="btn btn-primary">Check Out My Projects</a>
             </div>
         </div>
     }
@@ -31,6 +30,7 @@ else
 
 @code {
     private Project[] AllProjects;
+    private List<Technology> Technologies = new List<Technology>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -41,22 +41,14 @@ else
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
-            Project Sudoku = new Project("SudokuSolver", "Unity", new DateTime(2020, 12, 28), "https://simmer.io/@matix0508/sudokusolver");
-            Sudoku.Description = "Short Description";
-            Sudoku.Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg/1200px-Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg.png";
-            Project Sudoku2 = new Project("SudokuSolver", "Unity", new DateTime(2020, 12, 28), "https://simmer.io/@matix0508/sudokusolver");
-            Sudoku2.Description = "Short Description";
-            Sudoku2.Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg/1200px-Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg.png";
-            Project Sudoku3 = new Project("SudokuSolver", "Unity", new DateTime(2020, 12, 28), "https://simmer.io/@matix0508/sudokusolver");
-            Sudoku3.Description = "Short Description";
-            Sudoku3.Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg/1200px-Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg.png";
-            var result = new List<Project>()
+            AllProjects = Project.GetExample();
+        }
+        foreach (Project pr in AllProjects)
+        {
+            if (!Technologies.Contains(pr.Technology))
             {
-                Sudoku,
-                Sudoku2,
-                Sudoku3
-            };
-            AllProjects = result.ToArray();
+                Technologies.Add(pr.Technology);
+            }
         }
     }
 }

@@ -1,0 +1,53 @@
+﻿@page "/projects/{tech}"
+@using BlazorApp.Shared
+
+@inject HttpClient Http
+
+<h3>@tech</h3>
+
+@if (MyProjects == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="d-flex p-2 flex-wrap">
+
+        @foreach (var project in MyProjects)
+        {
+            <div class="card" style="width: 18rem;">
+                <img src="@project.Image" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@project.Name</h5>
+                    <p class="card-text">@project.Description</p>
+                    <a href="@project.URL" class="btn btn-primary">See for yourself</a>
+                </div>
+            </div>
+        }
+
+    </div>
+
+}
+
+@code {
+    [Parameter]
+    public string tech { get; set; }
+
+    private Project[] MyProjects;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        try
+        {
+            MyProjects = await Http.GetFromJsonAsync<Project[]>("/api/Projects");
+            MyProjects = MyProjects.Where(pr => pr.Technology.Name == tech).ToArray();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+            MyProjects = Project.GetExample().Where(pr => pr.Technology.Name.ToLower() == tech.ToLower()).ToArray();
+        }
+    }
+}

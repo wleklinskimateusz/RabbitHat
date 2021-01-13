@@ -33,6 +33,14 @@ namespace BlazorApp.Client.Models
             StartingTime = start;
         }
 
+        public Project(string name, Technology tech, DateTime start, string url)
+        {
+            Name = name;
+            Technology = tech;
+            StartingTime = start;
+            URL = url;
+        }
+
         public Project(string name, string tech, DateTime start, string url)
         {
             Name = name;
