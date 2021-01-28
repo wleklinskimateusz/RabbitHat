@@ -30,6 +30,7 @@ else
 
 @code {
     private Project[] AllProjects;
+    private List<string> techNames = new List<string>();
     private List<Technology> Technologies = new List<Technology>();
 
     protected override async Task OnInitializedAsync()
@@ -45,10 +46,13 @@ else
         }
         foreach (Project pr in AllProjects)
         {
-            if (!Technologies.Contains(pr.Technology))
+            if (!techNames.Contains(pr.Technology.Name))
             {
                 Technologies.Add(pr.Technology);
+                techNames.Add(pr.Technology.Name);
             }
         }
+
+
     }
 }

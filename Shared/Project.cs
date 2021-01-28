@@ -55,16 +55,17 @@ namespace BlazorApp.Shared
         {
             Technology Unity = new Technology("Unity", "https://cpng.pikpng.com/pngl/s/5-54407_unity-logo-white-png-unity-3d-logo-transparent.png");
             Technology Python = new Technology("Python", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/768px-Python-logo-notext.svg.png");
+            Technology Blazor = new Technology("Blazor", "https://upload.wikimedia.org/wikipedia/commons/d/d0/Blazor.png");
 
             Project Sudoku = new Project("SudokuSolver", Unity, new DateTime(2020, 12, 28), "https://simmer.io/@matix0508/sudokusolver")
             {
                 Description = "Short Description",
                 Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg/1200px-Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg.png"
             };
-            Project Sudoku2 = new Project("SudokuSolver", Unity, new DateTime(2020, 12, 28), "https://simmer.io/@matix0508/sudokusolver")
+            Project RabbitHat = new Project("RabbitHat", Blazor, new DateTime(2020, 12, 28), "/")
             {
                 Description = "Short Description",
-                Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg/1200px-Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg.png"
+                Image = "Images/RabbitHat.png"
             };
             Project Korwin = new Project("Korwin", Unity, new DateTime(2020, 11, 28), "https://simmer.io/@matix0508/korwin")
             {
@@ -80,7 +81,7 @@ namespace BlazorApp.Shared
             var result = new List<Project>()
             {
                 Sudoku,
-                Sudoku2,
+                RabbitHat,
                 Korwin,
                 FlappyBird
             };
