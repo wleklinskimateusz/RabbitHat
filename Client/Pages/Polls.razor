@@ -1,0 +1,14 @@
+﻿@page "/polls"
+@using BlazorApp.Shared
+
+@inject HttpClient Http
+<h3>Polls</h3>
+
+@if (AllPolls == null)
+{
+    <p><em>Loading...</em></p>
+}
+
+@code {
+    private Polls[] AllPolls;
+}

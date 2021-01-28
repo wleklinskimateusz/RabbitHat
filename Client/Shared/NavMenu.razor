@@ -21,8 +21,13 @@
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=PLahKLy8pQdCM0SiXNn3EfGIXX19QGzUG3s">
-                <span class="oi oi-pencil" aria-hidden="true"></span> Drawing
+            <NavLink class="nav-link" href="https://pl.pinterest.com/mateuszwlekliski/drawings/">
+                <span class="oi oi-pencil" aria-hidden="true"></span> Drawings
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">          
+            <NavLink class="nav-link" href="/polls">
+                <span class="oi oi-graph" aria-hidden="true"></span> Polls
             </NavLink>
         </li>
 
@@ -33,6 +38,8 @@
 
 
 @code {
+
+    //TODO::for loop for all sites
     private bool collapseNavMenu = true;
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
