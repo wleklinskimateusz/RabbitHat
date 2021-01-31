@@ -2,7 +2,10 @@
 @using BlazorApp.Shared
 
 @inject HttpClient Http
-<h3>Polls</h3>
+<h3>Badanie Preferencji Płatkowo-Mlecznych</h3>
+<a href="https://forms.gle/Pv6h2GsWZttbPMWW9">&rarr; Ankieta dostępna tutaj &larr;</a>
+<br/>
+<a href="https://docs.google.com/spreadsheets/d/1W4iG--Nq7bX-_i_WXkPkvZBt8i-jDHEUG7t80cyH5tU/edit?usp=sharing">&rArr; Wyniki &lArr;</a>
 
 @if (AllPolls == null)
 {
@@ -10,5 +13,5 @@
 }
 
 @code {
-    private Polls[] AllPolls;
+    private Poll[] AllPolls;
 }
